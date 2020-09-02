@@ -8,7 +8,7 @@ metadata:
     env: production
   name: production-app1
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: app1
