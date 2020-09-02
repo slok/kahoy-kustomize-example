@@ -4,12 +4,6 @@ set -eufCo pipefail
 export SHELLOPTS
 IFS=$'\t\n'
 
-#!/bin/bash
-# vim: ai:ts=8:sw=8:noet
-set -eufCo pipefail
-export SHELLOPTS
-IFS=$'\t\n'
-
 MANIFESTS_PATH="${MANIFESTS_PATH:-./_gen}"
 GIT_BEFORE_COMMIT_SHA="${GIT_BEFORE_COMMIT_SHA:-}"
 GIT_DEFAULT_BRANCH="${GIT_DEFAULT_BRANCH:-master}" # In case our default branch is different (e.g main).
