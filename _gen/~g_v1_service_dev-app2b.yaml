@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: app2
+    env: dev
+  name: dev-app2b
+spec:
+  ports:
+  - port: 8666
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: app2
+    deployment: hello
+    env: dev
+  type: LoadBalancer

@@ -17,4 +17,4 @@ echo "Generating manifests"
 
 # Check if we have changes.
 echo "Checking if there are changes..."
-git diff --exit-code >/dev/null 2>&1 || { echo 'generated manifests are not up to date'; exit 1; }
+git diff --exit-code >/dev/null 2>&1 || { echo 'ERROR: generated manifests are not up to date'; exit 1; }

@@ -10,3 +10,16 @@ spec:
   - protocol: TCP
     port: 8666
     targetPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app2b
+spec:
+  selector:
+    deployment: hello
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8666
+    targetPort: 8080
