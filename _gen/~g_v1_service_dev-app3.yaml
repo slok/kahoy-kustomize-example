@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: app3
+    env: dev
+  name: dev-app3
+spec:
+  ports:
+  - port: 8666
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: app3
+    deployment: hello
+    env: dev
+  type: LoadBalancer

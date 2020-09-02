@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    note: Hello, I am staging!
+  labels:
+    app: app3
+    env: staging
+  name: staging-app3
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app3
+      deployment: hello
+      env: staging
+  template:
+    metadata:
+      annotations:
+        note: Hello, I am staging!
+      labels:
+        app: app3
+        deployment: hello
+        env: staging
+    spec:
+      containers:
+      - command:
+        - /hello
+        - --port=8080
+        - --enableRiskyFeature=$(ENABLE_RISKY)
+        env:
+        - name: ALT_GREETING
+          valueFrom:
+            configMapKeyRef:
+              key: altGreeting
+              name: staging-app1
+        - name: ENABLE_RISKY
+          valueFrom:
+            configMapKeyRef:
+              key: enableRisky
+              name: staging-app1
+        image: monopole/hello:1
+        name: the-container
+        ports:
+        - containerPort: 8080

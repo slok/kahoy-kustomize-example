@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  altGreeting: Good Morning!
+  enableRisky: "false"
+kind: ConfigMap
+metadata:
+  labels:
+    app: app2
+    env: dev
+  name: dev-app2

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app2
+    env: dev
+  name: dev-app2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app2
+      deployment: hello
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: app2
+        deployment: hello
+        env: dev
+    spec:
+      containers:
+      - command:
+        - /hello
+        - --port=8080
+        - --enableRiskyFeature=$(ENABLE_RISKY)
+        env:
+        - name: ALT_GREETING
+          valueFrom:
+            configMapKeyRef:
+              key: altGreeting
+              name: dev-app2
+        - name: ENABLE_RISKY
+          valueFrom:
+            configMapKeyRef:
+              key: enableRisky
+              name: dev-app2
+        image: monopole/hello:1
+        name: the-container
+        ports:
+        - containerPort: 8080
