@@ -2,6 +2,8 @@
 
 This repository is an example of how to use [Kahoy] and [Kustomize] (one way).
 
+The example uses [Kustomize] with multiple envs and apps, but could be simplified and use [Kahoy] to deploy a single app (to one or multiple envs).
+
 This Example uses github actions, but if you want to see an explained example of using github actions and [Kahoy] check [this][ga-kahoy-example]
 
 ## Structure
@@ -68,9 +70,9 @@ This example doesn't show how you can set up Kubectl for each env. TODO.
 
 ## Examples and use cases
 
-### Non updated Kustomze gen manifests should fail
+### Non updated Kustomize gen manifests should fail
 
-In this PR run first, we pushed a change that changed the overlays but not generated the manifests. Our CI check step has failed because of this (to fix we have done `make gen` and commit the changes).
+In this PR, we pushed a change that changed the overlays but not generated the manifests. Our CI check step has failed because of this (to fix we have done `make gen` and commit the changes).
 
 - [commit with error](https://github.com/slok/kahoy-kustomize-example/pull/3/commits/2ade2b1c0e8e25d808019ec8af9c28e9cbbd5473)
 - [commit fixed](https://github.com/slok/kahoy-kustomize-example/pull/3/commits/8661d26a136e3249b5620e597f6da252da47b4a0)
