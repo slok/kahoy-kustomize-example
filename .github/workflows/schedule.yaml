@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: ./scripts/ci/deploy.sh sync-all
+      - run: ./scripts/deploy-all.sh sync-all
