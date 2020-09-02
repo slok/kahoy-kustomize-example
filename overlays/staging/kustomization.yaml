@@ -1,0 +1,7 @@
+namePrefix: staging-
+commonLabels:
+  env: staging
+commonAnnotations:
+  note: Hello, I am staging!
+bases:
+- ../../base

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    note: Hello, I am production!
+  labels:
+    app: app2
+    env: production
+  name: production-app2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app2
+      deployment: hello
+      env: production
+  template:
+    metadata:
+      annotations:
+        note: Hello, I am production!
+      labels:
+        app: app2
+        deployment: hello
+        env: production
+    spec:
+      containers:
+      - command:
+        - /hello
+        - --port=8080
+        - --enableRiskyFeature=$(ENABLE_RISKY)
+        env:
+        - name: ALT_GREETING
+          valueFrom:
+            configMapKeyRef:
+              key: altGreeting
+              name: production-app2
+        - name: ENABLE_RISKY
+          valueFrom:
+            configMapKeyRef:
+              key: enableRisky
+              name: production-app2
+        image: monopole/hello:1
+        name: the-container
+        ports:
+        - containerPort: 8080

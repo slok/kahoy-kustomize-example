@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  altGreeting: Good Morning!
+  enableRisky: "false"
+kind: ConfigMap
+metadata:
+  annotations:
+    note: Hello, I am production!
+  labels:
+    app: app3
+    env: production
+  name: production-app3

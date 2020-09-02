@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    note: Hello, I am production!
+  labels:
+    app: app3
+    env: production
+  name: production-app3
+spec:
+  ports:
+  - port: 8666
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: app3
+    deployment: hello
+    env: production
+  type: LoadBalancer
