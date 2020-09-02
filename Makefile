@@ -30,4 +30,3 @@ gen: build-image ## Generates manifests using kustomize.
 .PHONY: check
 check: build-image ## Generates manifests using kustomize.
 	@$(DOCKER_RUN_CMD) /bin/sh -c '$(CHECK_CMD)'
-
