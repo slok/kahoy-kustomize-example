@@ -1,7 +1,10 @@
+---
 kind: Service
 apiVersion: v1
 metadata:
-  name: app2
+  name: app2b
+  labels:
+    app: app2
 spec:
   selector:
     deployment: hello

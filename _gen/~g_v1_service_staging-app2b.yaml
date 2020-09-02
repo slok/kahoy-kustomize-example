@@ -13,7 +13,6 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: app2
     deployment: hello
     env: staging
   type: LoadBalancer

@@ -1,7 +1,13 @@
 namePrefix: staging-
+
 commonLabels:
   env: staging
+
 commonAnnotations:
   note: Hello, I am staging!
+
 bases:
-- ../../base
+  - ../../base
+
+resources:
+  - ./app2/service-b.yaml
