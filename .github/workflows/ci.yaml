@@ -1,40 +1,40 @@
-name: CI
+# name: CI
 
-on: [push]
+# on: [push]
 
-jobs:
-  check:
-    name: check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: make check
+# jobs:
+#   check:
+#     name: check
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - run: make check
 
-  deploy-dry-run:
-    if: github.ref != 'refs/heads/master'
-    needs: [check]
-    name: deploy dry-run
-    runs-on: ubuntu-latest
-    container: slok/kahoy:latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: git branch master origin/master # Track base branch (origin/master) from remote. Kahoy only works with local branches.
-      - run: ./scripts/deploy-all.sh dry-run
-      - run: ./scripts/deploy-all.sh diff
+#   deploy-dry-run:
+#     if: github.ref != 'refs/heads/master'
+#     needs: [check]
+#     name: deploy dry-run
+#     runs-on: ubuntu-latest
+#     container: slok/kahoy:latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - run: git branch master origin/master # Track base branch (origin/master) from remote. Kahoy only works with local branches.
+#       - run: ./scripts/deploy-all.sh dry-run
+#       - run: ./scripts/deploy-all.sh diff
           
-  deploy:
-    # Only on master.
-    if: github.ref == 'refs/heads/master'
-    needs: [check]
-    name: deploy
-    runs-on: ubuntu-latest
-    container: slok/kahoy:latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: ./scripts/deploy-all.sh run
-        env:
-          GIT_BEFORE_COMMIT_SHA: ${{ github.event.before }}
+#   deploy:
+#     # Only on master.
+#     if: github.ref == 'refs/heads/master'
+#     needs: [check]
+#     name: deploy
+#     runs-on: ubuntu-latest
+#     container: slok/kahoy:latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - run: ./scripts/deploy-all.sh run
+#         env:
+#           GIT_BEFORE_COMMIT_SHA: ${{ github.event.before }}

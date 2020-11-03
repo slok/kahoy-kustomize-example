@@ -1,17 +1,17 @@
-name: Schedule sync all
+# name: Schedule sync all
 
-on:
-  schedule:
-    - cron:  '0 * * * *'
+# on:
+#   schedule:
+#     - cron:  '0 * * * *'
 
-jobs:
-  deploy-all:
-    if: github.ref == 'refs/heads/master'
-    name: sync
-    runs-on: ubuntu-latest
-    container: slok/kahoy:latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: ./scripts/deploy-all.sh sync-all
+# jobs:
+#   deploy-all:
+#     if: github.ref == 'refs/heads/master'
+#     name: sync
+#     runs-on: ubuntu-latest
+#     container: slok/kahoy:latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - run: ./scripts/deploy-all.sh sync-all
